@@ -7,7 +7,7 @@ public class frasesmotivacionais {
         String[] frases = {
             "Você consegue!",
             "Acredite no seu potencial!",
-            "Os erros te tornam mais forte",
+            "Os erros te tornam mais forte!",
             "Se compare com você do passado, não com os outros.",
             "Impossível é uma palavra que serve só de enfeite no dicionário.",
             "Não acredite em tudo o que vê. Todo mundo está travando uma batalha interna. Não é fácil para ninguém.",
@@ -17,7 +17,7 @@ public class frasesmotivacionais {
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
-        int lastIdx = 0;
+        int lastIdx = 99999;
 
         System.out.println("Bem vindo ao Gerador de Frases Motivacionais");
 
@@ -25,8 +25,10 @@ public class frasesmotivacionais {
         while (perguntar.equalsIgnoreCase("s") || perguntar.equalsIgnoreCase("sim")) {
 
             int choosedIdx = random.nextInt(frases.length);
-            while (choosedIdx == lastIdx) {
-                choosedIdx = random.nextInt(frases.length);
+            if (choosedIdx == lastIdx && choosedIdx < frases.length) {
+                choosedIdx += 1;
+            } else {
+                choosedIdx -= 1;
             }
 
             System.out.println(frases[choosedIdx]);
